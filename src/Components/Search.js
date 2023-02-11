@@ -4,7 +4,7 @@ const endpoint1 = "http://api.openweathermap.org/data/2.5/weather?q=";
 const endpoint2 = "http://api.openweathermap.org/data/2.5/forecast?q=";
 
 const API_KEY = "2f30efc9b6f02e277aa6d1df597bc628";
-const Search = () => {
+const Search = (props) => {
   const quickSearch = ["Nigeria", "London", "Germany", "Malaysia", "Australia"];
   const quickSearchElement = quickSearch.map((item, ind) => {
     return (
@@ -20,22 +20,7 @@ const Search = () => {
       </p>
     );
   });
-  // const weatherDefault = [
-  //   { name: "Cloudy", condition: 12 },
-  //   { name: "Cloudy", condition: 13 },
-  //   { name: "Cloudy", condition: 14 },
-  //   { name: "Cloudy", condition: 15 },
-  //   { name: "Cloudy", condition: 16 },
-  //   { name: "Cloudy", condition: 17 },
-  // ];
-  // const weatherDefaultElements = weatherDefault.map((item, ind) => {
-  //   return (
-  //     <div key={ind} className="px-20 flex justify-between hover:bg-green-500">
-  //       <p className="text-xl py-5">{item.name}</p>
-  //       <p className="text-xl py-5">{item.condition}%</p>
-  //     </div>
-  //   );
-  // });
+
   const [city, setCity] = useState("");
   const [myCity, setMyCity] = useState("");
   const url1 = `${endpoint1}${
@@ -46,12 +31,13 @@ const Search = () => {
   }&units=metric&appid=${API_KEY}`;
   const { data, loading } = useFetch(url1);
   const fiveDays = useFetch(url2);
-  // console.log(new Date(1676116800));
+
   console.log(data);
   console.log(fiveDays);
   const handleSubmit = (e) => {
     e.preventDefault();
     setMyCity(city);
+    props.handleRecieveData(city);
     setCity("");
   };
   const handleChange = (e) => {
