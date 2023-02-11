@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "./useFetch";
-const endpoint1 = "http://api.openweathermap.org/data/2.5/weather?q=";
-const endpoint2 = "http://api.openweathermap.org/data/2.5/forecast?q=";
+const endpoint1 = "https://api.openweathermap.org/data/2.5/weather?q=";
+const endpoint2 = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
 const API_KEY = "2f30efc9b6f02e277aa6d1df597bc628";
 const Search = (props) => {
