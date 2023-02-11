@@ -6,6 +6,7 @@ const Home = () => {
       <section className=" float-none lg:float-right">
         <Search />
       </section>
+      <>akjkfjkajdfkjkdjfkl;ajdkefjka</>
     </main>
   );
 };

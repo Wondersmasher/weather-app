@@ -5,7 +5,6 @@ const useFetch = (url) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const getWeatherForecast = useCallback(async () => {
-    setLoading(true);
     try {
       const response = await axios.get(url);
       setData(response.data);
@@ -18,7 +17,10 @@ const useFetch = (url) => {
     }
   }, [url]);
   useEffect(() => {
-    getWeatherForecast();
+    setLoading(true);
+    setTimeout(() => {
+      getWeatherForecast();
+    }, 2000);
   }, [getWeatherForecast, url]);
   return { data, loading, error };
 };
