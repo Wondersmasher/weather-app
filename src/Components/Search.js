@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Main from "./Main";
 import useFetch from "./useFetch";
 const endpoint1 = "https://api.openweathermap.org/data/2.5/weather?q=";
 const endpoint2 = "https://api.openweathermap.org/data/2.5/forecast?q=";
@@ -44,7 +45,7 @@ const Search = (props) => {
     setCity(e.target.value);
   };
   return (
-    <section className="lg:bg-gradient-to-b lg:from-green-700 lg:to-green-300 lg:h-[100vh]  lg:w-[30vw] xl:w-[22vw] opacity-70">
+    <section className="lg:bg-gradient-to-b lg:from-green-700 lg:to-green-300 lg:min-h-[100vh]  lg:w-[30vw] xl:w-[22vw] opacity-70">
       <form className="flex justify-center  pt-[4rem]">
         <input
           type="text"
@@ -61,32 +62,35 @@ const Search = (props) => {
       </form>
       <div className="py-5">{quickSearchElement}</div>
       <hr className="w-3/4 mx-auto my-5" />
-      <h2 className="px-20 text-xl py-8">Weather Details</h2>
-      <div className="px-20 flex justify-between hover:bg-green-500">
-        <p className="text-xl py-5">Humidity</p>
-        <p className="text-xl py-5">
+      <h2 className=" text-center text-4xl py-8">Weather Details</h2>
+      <div className="px-10 text-xl lg:hidden  text-center">
+        <Main fact={props.fact} />
+      </div>
+      <div className="px-10 flex justify-between hover:bg-green-500 py-5">
+        <p className="text-xl ">Humidity</p>
+        <p className="text-xl ">
           {loading ? "loading" : `${data?.main.humidity} %` || "nil"}
         </p>
       </div>
-      <div className="px-20 flex justify-between hover:bg-green-500">
+      <div className="px-10 flex justify-between hover:bg-green-500 ">
         <p className="text-xl py-5">Pressure</p>
         <p className="text-xl py-5">
           {loading ? "loading" : `${data?.main.pressure} mb` || "nil"}
         </p>
       </div>
-      <div className="px-20 flex justify-between hover:bg-green-500">
+      <div className="px-10 flex justify-between hover:bg-green-500 ">
         <p className="text-xl py-5">Wind speed</p>
         <p className="text-xl py-5">
           {loading ? "loading" : `${data?.wind.speed} km/hr` || "nil"}
         </p>
       </div>
-      <div className="px-20 flex justify-between hover:bg-green-500">
+      <div className="px-10 flex justify-between hover:bg-green-500">
         <p className="text-xl py-5">Wind gust</p>
         <p className="text-xl py-5">
           {loading ? "loading" : data?.wind.gust || "nil"}
         </p>
       </div>
-      <div className="px-20 flex justify-between hover:bg-green-500">
+      <div className="px-10 flex justify-between hover:bg-green-500">
         <p className="text-xl py-5">Wind deg</p>
         <p className="text-xl py-5">
           {loading ? "loading" : data?.wind.deg || "nil"}

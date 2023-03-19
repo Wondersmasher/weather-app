@@ -15,11 +15,13 @@ const Home = () => {
   const fact = useFetch(url);
   console.log(fact.data);
   return (
-    <main className="background min-h-screen w-[100vs]">
-      <section className=" float-none lg:float-right">
-        <Search handleRecieveData={handleRecieveData} />
-      </section>
-      <Main fact={fact} />
+    <main className="background min-h-screen w-[100vs] lg:flex lg:justify-between grid lg:flex-row-reverse">
+      {/* <section className=" float-none lg:float-right"> */}
+      <Search handleRecieveData={handleRecieveData} fact={fact} />
+      {/* </section> */}
+      <div className="hidden lg:grid ">
+        <Main fact={fact} type="first" />
+      </div>
     </main>
   );
 };
